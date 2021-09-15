@@ -1,0 +1,97 @@
+<div class="appComponent ">
+    <div class="row">
+      <form [formGroup] = "RegisterForm"
+        (ngSubmit)="onSubmit()"
+        class="col-10 col-md-6 mx-auto  border rounded shadow p-3 bg-white">
+
+      <div class="form-group">
+        <label for="InputName"> Name:  </label>
+        <input 
+          type="text" 
+          class="form-control" id="InputName"
+          formControlName = "Name"/>
+
+          <div *ngIf=" Name.invalid && Name.touched && Name.dirty ">
+            <div *ngIf="Name.errors?.required" class="text-danger">Name is required</div>
+          </div>
+
+      </div>
+  
+      <div class="form-group">
+        <label for="InputEmail"> Email:  </label>
+        <input type="email" 
+          class="form-control" id="InputEmail" aria-describedby="emailHelp"
+          formControlName = "Email">
+
+          <div *ngIf=" Email.invalid && Email.touched && Email.dirty ">
+            <div *ngIf="Email.errors?.required" class="text-danger">Email is required</div>
+            <div *ngIf="Email.errors?.email" class="text-danger">Email must be a valid email address</div>
+          </div>
+      </div>
+
+      <div class="form-group">
+        <label for="InputPassword"> Password: </label>
+        <input type="password" 
+          class="form-control" id="InputPassword"
+          formControlName = "Passward">
+
+          <div *ngIf=" Passward.invalid && Passward.touched && Passward.dirty ">
+            <div *ngIf="Passward.errors?.required" class="text-danger">Passward is required</div>
+          </div>
+      </div>
+
+
+
+      <div class="form-group">
+        <label for="InputConfirmPassword">Confirm Password: </label>
+        <input type="password" 
+          class="form-control" id="InputConfirmPassword"
+          formControlName = "ConfirmPassward">
+
+          <div *ngIf=" ConfirmPassward.invalid && ConfirmPassward.touched && ConfirmPassward.dirty ">
+            <div *ngIf="ConfirmPassward.errors?.required" class="text-danger">ConfirmPassward is required</div>
+            <div *ngIf="ConfirmPassward.errors?.invaildPassward" class="text-danger">Passward must be identical</div>
+          </div>
+      </div>
+
+      <div class="form-group">
+        <label> Hobbies: </label>
+        <select class="custom-select form-control"
+        formControlName = "Hobbies">
+          <option selected disabled> Choose ... </option>
+          <option value="Reading"> Reading </option>
+          <option value="Painting"> Painting </option>
+          <option value="Swimming"> Swimming </option>
+          <option value="Other"> Other </option>
+        </select>
+      </div>
+
+      <div class="form-group">
+      <button type="submit" class=" btn btn-danger form-control"
+        [disabled] = "RegisterForm.invalid"
+        >
+          Submit</button>
+      </div>
+
+    </form>
+
+    <!-- card -->
+        <div *ngIf="isSubmitted"  class="card m-3 mx-auto col-md-8 col-10">
+          <div class="card-header"> <h2> Congratulationa! </h2> </div>
+
+          <div class="card-body">
+            <h5 class="card-title"> You complete Application Form successfully! </h5>
+            <pre class="card-text">
+    Your Name is {{UserName}}.
+    Your Email is {{UserEmail}}.
+    Your Passward is {{UserPassward}}.
+    Your Hobbies is {{UserHobbies}}.
+             
+            </pre>
+          </div>
+
+        </div>
+
+
+  </div>
+</div>

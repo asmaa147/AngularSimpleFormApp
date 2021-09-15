@@ -1,0 +1,18 @@
+.appComponent{
+    background-color : #999;
+    width : 100%;
+    min-height : 100vh;
+    padding : 1.5em
+}
+.cont {
+    min-width:50%
+}
+.appComponent .form-group{
+    margin: 1em 2em;
+} 
+.appComponent .form-group label{
+    font-weight: bold
+}
+.appComponent .form-group .form-control{
+    margin: 1em 0;
+}
